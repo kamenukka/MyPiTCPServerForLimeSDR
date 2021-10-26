@@ -3,6 +3,7 @@
 #include <cstring>
 #include <mutex>
 
+
 #ifdef _WIN32
 #define WIN(exp) exp
 #define NIX(exp)
@@ -235,7 +236,6 @@ void TcpServer::handlingLoop() {
     SocketAddr_in client_addr;
     if (Socket client_socket = accept(serv_socket, (struct sockaddr*)&client_addr, &addrlen);
         client_socket WIN(!= 0)NIX(>= 0) && _status == status::up) {
-
       if(client_socket == WIN(INVALID_SOCKET)NIX(-1)) continue;
 
       // Enable keep alive for client
